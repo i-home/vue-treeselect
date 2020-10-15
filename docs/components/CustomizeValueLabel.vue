@@ -2,6 +2,7 @@
   <div>
     <treeselect :options="options" :value="value" :multiple="multiple">
       <div slot="value-label" slot-scope="{ node }">{{ node.raw.customLabel }}</div>
+      <div slot="label" slot-scope="params">{{ params.nodes.length }}</div>
     </treeselect>
     <p>
       <label><input type="checkbox" v-model="multiple">Multi-select</label>

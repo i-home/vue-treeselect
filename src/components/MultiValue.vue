@@ -31,6 +31,28 @@
           </div>
         )
       },
+
+      renderSingleValueLabel() {
+        const { instance } = this
+        const nodes = instance.selectedNodes
+
+        const customValueLabelRenderer = instance.$scopedSlots.label
+        return customValueLabelRenderer && nodes.length > 0
+          ? customValueLabelRenderer({ nodes })
+          : null
+      },
+
+      renderValuesLabel() {
+        const { instance } = this
+
+        const customValueLabelRenderer = instance.$scopedSlots.label
+        return (
+          customValueLabelRenderer ? (
+          <div class="vue-treeselect__single-value" key="values-label">
+            { this.renderSingleValueLabel() }
+          </div>) : this.renderMultiValueItems()
+        )
+      },
     },
 
     render() {
@@ -45,7 +67,7 @@
 
       return renderValueContainer(
         <transition-group class="vue-treeselect__multi-value" {...transitionGroupProps}>
-          {this.renderMultiValueItems()}
+          {this.renderValuesLabel()}
           {this.renderExceedLimitTip()}
           <Placeholder key="placeholder" />
           <Input ref="input" key="input" />
