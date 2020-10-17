@@ -4,8 +4,9 @@
       :multiple="true"
       :options="options"
       :value-consists-of="valueConsistsOf"
-      v-model="value"
-      />
+      v-model="value">
+      <div slot="label" slot-scope="params">Selected {{ params.value.length }} items</div>
+    </treeselect>
     <treeselect-value :value="value" />
     <p><strong>Value consists of:</strong></p>
     <p class="options">

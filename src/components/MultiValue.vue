@@ -35,10 +35,11 @@
       renderSingleValueLabel() {
         const { instance } = this
         const nodes = instance.selectedNodes
+        const value = instance.value
 
         const customValueLabelRenderer = instance.$scopedSlots.label
         return customValueLabelRenderer && nodes.length > 0
-          ? customValueLabelRenderer({ nodes })
+          ? customValueLabelRenderer({ nodes, value })
           : null
       },
 
